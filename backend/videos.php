@@ -6,6 +6,12 @@
   $DB_login="root";
   $DB_pass="fernandobaterias5";
   $DB_db="flauta";
+
+
+  // $DB_host="fdb25"; 
+  // $DB_login="3254767_flauta";
+  // $DB_pass="flaut@s89";
+  // $DB_db="3254767_flauta";
   
 //php 7
  $conexao = "";

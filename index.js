@@ -1,4 +1,4 @@
-  var url = '../backend/musicas.php';
+  var url = './backend/musicas.php';
   
   function mostrarAddMusicas(){
     $(".add-musicas").toggle("fast");  
@@ -38,7 +38,7 @@ function init(){
 
              if (index == 0) {
                    card = '<div class="col-sm-4"><a onclick="tocar('+index+')"><div class="card" style="width: auto">'+
-                  '<img class="card-img-top" src="../imagens/5.JPG" alt="Card image cap">'+
+                  '<img class="card-img-top" src="./imagens/5.JPG" alt="Card image cap">'+
                   '<div class="card-body">'+
                     '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
                     '<audio id="'+index+'" controls  src="'+element.diretorio+element.nomeArquivo+'" ></audio><br>'+
@@ -47,7 +47,7 @@ function init(){
              }
              else {
                     card = card + '<div class="col-sm-4"><a onclick="tocar('+index+')"><div class="card" style="width: auto;">'+
-                  '<img class="card-img-top" src="../imagens/5.JPG" alt="Card image cap">'+
+                  '<img class="card-img-top" src="./imagens/5.JPG" alt="Card image cap">'+
                   '<div class="card-body">'+
                     '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
                     '<audio id="'+index+'" controls  src="'+element.diretorio+element.nomeArquivo+'" ></audio><br>'+

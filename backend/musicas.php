@@ -6,6 +6,11 @@
   $DB_login="root";
   $DB_pass="fernandobaterias5";
   $DB_db="flauta";
+
+  // $DB_host="fdb25"; 
+  // $DB_login="3254767_flauta";
+  // $DB_pass="flaut@s89";
+  // $DB_db="3254767_flauta";
   
 //php 7
  $conexao = "";
@@ -61,13 +66,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$file_name = $_POST['name']; // nome do arquivo
 			$tipo = $_POST['type'];
 			$novo_nome = md5(time()).mt_rand(5, 100).".mp3";
-			$diretorio = "../arquivos/musicas/";
+			$diretorioReal = "../arquivos/musicas/";
+			$diretorio = "./arquivos/musicas/";
+
 
 			if (!contem($file_name, ".")) {
 				$file_name = $file_name.$extensao;
 			}
 
-			move_uploaded_file($file_path, $diretorio . basename($novo_nome)); 
+			move_uploaded_file($file_path, $diretorioReal . basename($novo_nome)); 
 
 			$response = json_encode("raspa de grilo mocho ");
 			echo $response;
