@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Músicas para praticar</title>
+  <title>Vídeos para praticar</title>
 
   <!-- Bootstrap core CSS -->
   <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -36,13 +36,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-n ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./#">Músicas</a>
+            <a class="nav-link" href="../">Músicas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-add" href="./videos" >Vídeos</a>
+            <a class="nav-link nav-link-add" href="../videos" >Vídeos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-add" href="./youtube" >Youtube</a>
+            <a class="nav-link nav-link-add" href="./#" >Youtube</a>
           </li>          
         </ul>
       </div>
@@ -54,17 +54,23 @@
     <div class="row" style="margin-bottom: 15px">
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Aulas de flauta</h1>
-        <p class="lead">Músicas</p>
+        <p class="lead">Youtube</p>
         <!-- <button type="button" onclick="document.location.reload(true)">atualizar</button> -->
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="mostrarAddMusicas()">Adicionar músicas</button>
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="mostrarExcluir()">Excluir músicas</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="mostrarAddMusicas()">Incorporar vídeos</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="mostrarExcluir()">Excluir vídeos</button>
       </div>
     </div>
     <div class="row bb">
       <div class="col-2 ">   
       </div>
       <div class="col-8 add-musicas">
-        <div id="drag-drop-area"></div>
+        <form autocomplete="off">
+          <label>Incorporar vídeo do Youtube</label>
+          
+          <input class="form-control" id="embed" autocomplete="off" placeholder="Cole aqui o link de incorporação do vídeo"></input>
+          <button type="button" class="btn btn-block btn-success" onclick="inserir()" style ="margin-top: 10px; margin-bottom: 10px">Salvar</button>
+          <a id="help" onclick="ajuda()">Como eu faço para copiar o link correto?</a>
+        </form>
 
       </div>
       <div class="col-2 ">   
@@ -73,9 +79,9 @@
     <div class="row" id="row-musicas">
 
     </div>
-    <audio src="arquivos/880ec4a9eb2094bc9221d5a8e2c9e46410.mp3" >
-      <button type="button">lll</button>
-    </audio>
+<!--     <div class="row">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/KlJd_bI7DVo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div> -->
   <!-- Bootstrap core JavaScript -->
     <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

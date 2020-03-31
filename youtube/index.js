@@ -1,4 +1,4 @@
-  var url = '../backend/videos.php';
+  var url = '../backend/youtube.php';
   
   function mostrarAddMusicas(){
     $(".add-musicas").toggle("fast");  
@@ -8,9 +8,14 @@ function mostrarExcluir(){
 var elemento = document.getElementById('bt-ex'+'0');
 console.log(elemento.classList)
 if(elemento.classList.contains('esconder')){
+  
   $(".btn-excluir").removeClass('esconder');
+  
+  $("html, body").animate( 
+    { scrollTop: "200" }, 700);
     
 }else {
+  
   $(".btn-excluir").addClass('esconder');
        
   }
@@ -39,9 +44,9 @@ function init(){
              if (index == 0) {
                    card = '<div class="col-sm-4"><a onclick="tocar('+index+')"><div class="card" style="width: auto">'+
                   // '<img class="card-img-top" src="../imagens/5.JPG" alt="Card image cap">'+
-                  '<video id="'+index+'" controls  src="'+element.diretorio+element.nomeArquivo+'" ></video><br>'+
+                  element.embed+
                   '<div class="card-body">'+
-                    '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
+                    // '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
                     
                     '<a class="btn btn-sm btn-excluir esconder" id="bt-ex'+index+'" onclick="excluir('+element.id+')" >Excluir</a></div>'+
                   '</div></a></div>';
@@ -49,10 +54,10 @@ function init(){
              else {
                     card = card + '<div class="col-sm-4"><a onclick="tocar('+index+')"><div class="card" style="width: auto;">'+
                   // '<img class="card-img-top" src="../imagens/5.JPG" alt="Card image cap">'+
-                    '<video id="'+index+'" controls  src="'+element.diretorio+element.nomeArquivo+'" ></video><br>'+
+                    element.embed+
 
                   '<div class="card-body">'+
-                    '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
+                    // '<p title="'+element.nome+'">'+element.nomeCurto+'</p>'+
                     '<a class="btn btn-sm btn-excluir esconder" id="bt-ex'+index+'" onclick="excluir('+element.id+')">Excluir</a></div>'+
                   '</div></a></div>';
              }
@@ -60,7 +65,7 @@ function init(){
             });
         
         }else {
-          card = "<p>Você ainda não inseriu nenhum vídeo.</p>"
+          card = "<p>Você ainda não incorporou nenhum vídeo do youtube.</p>"
         
       }
     var element = document.getElementById('row-musicas');
@@ -90,43 +95,54 @@ function excluir(id){
     }
   })
 }
+function ajuda(){
+    Swal.fire({
+  title: 'Onde eu copio o link correto?',
+  text: 'Siga o passo a passo acima para copiar o link do seu vídeo do Youtube.',
+  imageUrl: '../imagens/helpcompleto.png',
+  imageWidth: 515,
+  imageHeight: 1009,
+  imageAlt: 'Ajuda',
+
+})
+}
+function inserir(){
+  var embed = $("#embed").val();
+if (embed.indexOf('<iframe') !== -1) {
+  
+  $.post(url, {funcao: 'inserir', embed:embed}, function(response, status){
+    if (status) {
+      Swal.fire(
+      'Vídeo Incorporado!',
+      '',
+      'success'
+    ).then((result) => {
+        document.location.reload(false);
+
+      })      
+    } 
+    else {
+      Swal.fire(
+      'Ops, algo de errado aconteceu.',
+      'Tente novamente',
+      'error'
+    )
+    }
+  })
+
+} else {
+
+  ajuda();
+}
+  
+}
 
 $(document).ready(function(){       // ***** Após a página carregar *****
 
   init();
-      var uppy = Uppy.Core({
-        debug: true,
-        autoProceed: false,
-        restrictions: {
-          maxNumberOfFiles: 5,
-          maxFileSize: 15000000
-          // allowedFileTypes: ['audio/*', '.mp4', 'application/octet-stream']
-        }
-      })
-      .use(Uppy.Dashboard, {
-        inline: true,
-        target: '#drag-drop-area',
-        width: 900,
-        height:300,
-        allowMultipleUploads :  true ,
-        locale: Uppy.locales.pt_BR
 
-      })
-      .use(Uppy.XHRUpload, {endpoint: url,  fieldName: 'my_file'})
 
-      uppy.on('complete', (result) => {
-        // console.log('Upload complete! We’ve uploaded these files:', result.successful[0].response.body);
-        // console.log('Upload complete! We’ve uploaded these files:', result.successful);
-
-        Swal.fire(
-        'Sucesso!',
-        'Seus vídeos foram adicionados.',
-        'success'
-      ).then((result) => {
-        document.location.reload(false);
-
-      })
-      })  
+  
 
 
 })

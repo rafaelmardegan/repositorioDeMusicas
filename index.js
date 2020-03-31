@@ -9,6 +9,7 @@ var elemento = document.getElementById('bt-ex'+'0');
 console.log(elemento.classList)
 if(elemento.classList.contains('esconder')){
   $(".btn-excluir").removeClass('esconder');
+
     
 }else {
   $(".btn-excluir").addClass('esconder');

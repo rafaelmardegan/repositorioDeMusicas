@@ -132,8 +132,12 @@ audio{
 
 body{
 	/*background-color: #C6F3F7;*/
-	background-image: url('../imagens/n.png');
+	background-image: url('./imagens/n.png');
 	background-color: #EDF5FF;
+}
+#drag-drop-area{
+	border: solid #D8149A 2px;
+	border-radius: 5px;
 }
 
 @media(max-width: 990px){
